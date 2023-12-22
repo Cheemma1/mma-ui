@@ -1,5 +1,9 @@
 {
-  "name": "ui",
+  "name": "m-m-a-u-i",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cheemma1/mma-ui.git"
+  },
   "version": "1.0.0",
   "description": "  A button libray ",
   "main": "dist/cjs/index.js",
