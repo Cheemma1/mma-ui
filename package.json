@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/Cheemma1/mma-ui.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "  A button libray ",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -31,5 +31,11 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^11.0.8"
   }
 }

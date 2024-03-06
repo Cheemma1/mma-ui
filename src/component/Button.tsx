@@ -1,30 +1,5 @@
-// import React from "react";
-
-// export interface IButtonProps
-//   extends React.DetailedHTMLProps<
-//     React.ButtonHTMLAttributes<HTMLButtonElement>,
-//     HTMLButtonElement
-//   > {
-//   backgroundColor?: string;
-//   color?: string;
-// }
-
-// export const Button: React.FunctionComponent<IButtonProps> = (props) => {
-//   const { children, backgroundColor = "red", color = "white",  style } = props;
-
-//   let _style: React.CSSProperties = style || {};
-
-//   /** Override Defaults */
-//   if (backgroundColor && _style) _style.backgroundColor = backgroundColor;
-//   if (color && _style) _style.color = color;
-
-//   return (
-//     <button style={_style} {...props}>
-//       {children}
-//     </button>
-//   );
-// };
 import React from "react";
+import { Button as ChakraButton } from "@chakra-ui/react";
 
 export interface IButtonProps
   extends React.DetailedHTMLProps<
@@ -58,7 +33,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props) => {
   _style.cursor = "pointer"; // Add pointer cursor
 
   return (
-    <button
+    <ChakraButton
       style={_style}
       {...restProps}
       onMouseOver={() => {
@@ -73,6 +48,6 @@ export const Button: React.FunctionComponent<IButtonProps> = (props) => {
       }}
     >
       {children}
-    </button>
+    </ChakraButton>
   );
 };
