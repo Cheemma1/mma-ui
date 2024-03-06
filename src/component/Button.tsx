@@ -1,53 +1,60 @@
 import React from "react";
-import { Button as ChakraButton } from "@chakra-ui/react";
+import { Button as ChakraButton, ButtonProps } from "@chakra-ui/react";
 
-export interface IButtonProps
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+export interface IButtonProps extends ButtonProps {
   backgroundColor?: string;
   color?: string;
   width?: string | number;
   height?: string | number;
 }
 
-export const Button: React.FunctionComponent<IButtonProps> = (props) => {
-  const {
-    children,
-    backgroundColor = "purple",
-    color = "white", // Default color is white
-    style,
-    width = 100,
-    height = 40,
-    ...restProps
-  } = props;
+// export interface IButtonProps
+//   extends React.ComponentProps<typeof ChakraButton> ButtonProps {
+//   backgroundColor?: string;
+//   color?: string;
+//   width?: string | number;
+//   height?: string | number;
+// }
 
-  let _style: React.CSSProperties = style || {};
-
-  /** Override Defaults */
-  if (_style) _style.backgroundColor = backgroundColor;
-  if (_style) _style.color = color;
-  if (width) _style.width = width;
-  if (height) _style.height = height;
-  _style.cursor = "pointer"; // Add pointer cursor
+const Button: React.FC<IButtonProps> = ({
+  children,
+  backgroundColor = "purple",
+  color = "white",
+  width = 100,
+  height = 40,
+  ...restProps
+}) => {
+  const buttonStyles = {
+    backgroundColor,
+    color,
+    width,
+    height,
+    cursor: "pointer",
+    transition: "background-color 0.3s, border 0.3s",
+    "&:hover": {
+      backgroundColor: "transparent",
+      border: "1px solid purple",
+      color: "purple",
+    },
+  };
 
   return (
     <ChakraButton
-      style={_style}
       {...restProps}
-      onMouseOver={() => {
-        // Add hover styles
-        if (_style) _style.backgroundColor = "transparent";
-        if (_style) _style.border = "1px solid purple";
+      backgroundColor={backgroundColor}
+      color={color}
+      width={width}
+      height={height}
+      _hover={{
+        backgroundColor: "transparent",
+        border: "1px solid purple",
       }}
-      onMouseOut={() => {
-        // Remove hover styles
-        if (_style) _style.backgroundColor = backgroundColor;
-        if (_style) _style.border = "none";
-      }}
+      sx={buttonStyles}
+      // Pass any other Chakra UI props here
     >
       {children}
     </ChakraButton>
   );
 };
+
+export default Button;
